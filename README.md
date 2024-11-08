@@ -48,6 +48,7 @@ The candidate metrics are:
     NLI(c, a) can reveal if the answer has effectively exploited the context. 
       <br><br>
 3. **Context Relevance Score (↑):**
+   
     $s(q,c) = 〈f_\theta(q),f_\theta(c)〉$[5]
 
     where $f_\theta$ is a retriever model parameterized by $\theta$.
