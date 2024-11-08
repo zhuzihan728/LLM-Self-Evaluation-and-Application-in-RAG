@@ -1,7 +1,7 @@
 import spacy
 import jsonlines
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from tsfm_wrapper import MyModel
+from utils.tsfm_wrapper import MyModel
 import random
 import torch
 import os
@@ -17,8 +17,8 @@ from collections import Counter
 import string
 import sys
 import time
-from utils import FEW_SHOT, PROMPT_DICT, TASK_INST, load_jsonlines, control_tokens, load_special_tokens
-from metrics import loose_match, loose_acc, metric_max_over_ground_truths, exact_match_score, f1_score, normalize_answer
+from utils.utils import FEW_SHOT, PROMPT_DICT, TASK_INST, load_jsonlines, control_tokens, load_special_tokens
+from utils.metrics import loose_match, loose_acc, metric_max_over_ground_truths, exact_match_score, f1_score, normalize_answer
 from datasets import Dataset
 import pandas as pd
 from torch.utils.data import DataLoader
@@ -163,9 +163,6 @@ def main():
         elif "Llama-2" in args.model_name:
             prompts = [tokenizer.apply_chat_template(chat, tokenize=False) for chat in chats]
             prompts = [tokenizer.apply_chat_template(chat, tokenize=False) + 'The most accurate answer is #' for chat in chats]
-        elif 'selfrag' in args.model_name:
-            template = "### Instruction:\n{instruction}\n\n### Input:\n{input}\n\n### Response:\n"
-            prompts = [template.format(instruction=instruction, input=i)+'The most accurate answer is #' for i in batch['instruction']]
         else:
             raise NotImplementedError
         pred = model.generate(prompts)

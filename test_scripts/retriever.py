@@ -1,4 +1,4 @@
-from passage_retrieval import Retriever
+from retriever.passage_retrieval import Retriever
 
 import os
 import torch

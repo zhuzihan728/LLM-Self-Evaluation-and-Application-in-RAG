@@ -1,29 +1,15 @@
-import spacy
-import jsonlines
-from transformers import AutoTokenizer, AutoModelForCausalLM
-from tsfm_wrapper import MyModel
+
 import random
 import torch
 import os
 import numpy as np
-import openai
-from tqdm import tqdm
 import json
 import argparse
-import ast
-import re
-from tqdm import tqdm
-from collections import Counter
-import string
-import sys
-import time
-from utils import FEW_SHOT, PROMPT_DICT, TASK_INST, load_jsonlines, control_tokens, load_special_tokens, save_file_jsonl
-from metrics import loose_match, loose_acc, metric_max_over_ground_truths, exact_match_score, f1_score, normalize_answer
+from utils.utils import load_jsonlines, save_file_jsonl
 from datasets import Dataset
 import pandas as pd
 from torch.utils.data import DataLoader
-from functools import singledispatch
-from passage_retrieval import Retriever
+from retriever.passage_retrieval import Retriever
 
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())

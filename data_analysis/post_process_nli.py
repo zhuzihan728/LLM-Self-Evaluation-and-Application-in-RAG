@@ -1,6 +1,6 @@
-from utils import *
+from utils.utils import *
 import os
-from selfcheckGPT_wrapper import MyNLI
+from utils.selfcheckGPT_wrapper import MyNLI
 import numpy as np
 import json
 from dotenv import load_dotenv, find_dotenv

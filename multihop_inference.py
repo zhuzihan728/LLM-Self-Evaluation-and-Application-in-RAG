@@ -20,10 +20,10 @@ from collections import Counter
 import string
 import sys
 import time
-from utils import PROMPT_DICT, TASK_INST, load_jsonlines, control_tokens, load_special_tokens
-from metrics import match, loose_acc, metric_max_over_ground_truths, exact_match_score, f1_score
-from passage_retrieval import Retriever
-from tsfm_wrapper import MyModel
+from utils.utils import PROMPT_DICT, TASK_INST, load_jsonlines, control_tokens, load_special_tokens
+from utils.metrics import match, loose_acc, metric_max_over_ground_truths, exact_match_score, f1_score
+from retriever.passage_retrieval import Retriever
+from utils.tsfm_wrapper import MyModel
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 MODEL_ROOT = os.environ.get("model_path")

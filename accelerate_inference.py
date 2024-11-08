@@ -1,31 +1,21 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-import spacy
-import jsonlines
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from tsfm_wrapper import MyModel
+from utils.tsfm_wrapper import MyModel
 import random
 import torch
-import os
 import numpy as np
-import openai
 from tqdm import tqdm
 import json
 import argparse
-import ast
-import re
 from tqdm import tqdm
-from collections import Counter
 import string
-import sys
-import time
-from utils import FEW_SHOT, PROMPT_DICT, TASK_INST, load_jsonlines, control_tokens, load_special_tokens
-from metrics import loose_match, loose_acc, metric_max_over_ground_truths, exact_match_score, f1_score, normalize_answer
+from utils.utils import PROMPT_DICT, TASK_INST, load_jsonlines, control_tokens, load_special_tokens
+from utils.metrics import loose_match, loose_acc, metric_max_over_ground_truths
 from accelerate import Accelerator
 from accelerate.utils import gather_object
-from statistics import mean
 
-print("!!!NOTE: if use llama3 inst for health, modify the prompt \"is the statemet ... true or false?\" and prefix \"assistant\n\nThe statement is\" to the prompt.")
+print("NOTE: if use llama3 inst for health, modify the prompt \"is the statemet ... true or false?\" and prefix \"assistant\n\nThe statement is\" to the prompt.")
 
 seed = 633
 

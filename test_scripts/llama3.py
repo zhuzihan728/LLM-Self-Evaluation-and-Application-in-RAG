@@ -1,6 +1,6 @@
 import transformers
 import torch
-from tsfm_wrapper import MyModel
+from utils.tsfm_wrapper import MyModel
 from transformers import AutoTokenizer, AutoModelForCausalLM, GenerationConfig
 import os
 from dotenv import load_dotenv, find_dotenv
