@@ -179,6 +179,21 @@ In any case, when using RAG, it's always a good idea to check the quality of ret
 
 <img src="./assets/image7.png" alt="./assets/image7.png" width="500">
 
+**Ablation Study**
+
+Setup: Retrieve top 5 relevant documents and generate five candidate responses, select the response with the best metric score  as final output.
+
+Metric Indicators:
+
+ - Confidence (Cfd): average token probabilities.
+ - Context Relevance (Ctx): context relevance score.
+ - Self-evaluation (SelfEval): ask the same LLM to choose top answer, i.e., answer a single token in `["1", "2", "3", "4", "5"]`. 
+ - Combined: sum of the three scores above, for self-evaluation scores, use softmaxed token probabilities of `"1", "2", "3", "4", "5"`. All three metric scores are normalized to [0, 1] before sum.
+
+Accuracy losses and gains using RAG guided by factuality estimation metrics compared to retrieval@5:
+
+<img src="./assets/ablation.png" alt="./assets/ablation.png" width="800">
+
 ## (Not) Final Words
 
 This repository presents the interim results of our research on improving LLM factuality and reducing hallucinations. Current progress remains far from my ultimate research goal: to explore and strengthen the LLM’s ability to recognize its knowledge boundaries and provide feedback on the factuality of its responses, thereby ensuring a more trustworthy, evidence-based, and transparent AI.
