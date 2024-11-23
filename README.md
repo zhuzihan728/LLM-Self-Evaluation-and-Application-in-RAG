@@ -31,12 +31,9 @@ The candidate metrics are:
     In contrast, in the second case, "John Smith is a ___," the model might encounter ambiguity, as "John Smith" could be associated with multiple roles or professions. This scenario is a negative example where the model is uncertain about the continuation, leading to a flat probability distribution. During inference, this is likely to lead to a non-factual word being generated.
     <br><br>
 2. **The NLI (Natural Language Inference) scores from a standalone NLI model (↑):**
-    <br><br>
-
     1. NLI(q, c)
     2. NLI(q, a)
     3. NLI(c, a)
-    <br><br>
 
     **Reasoning:** Natural Language Inference (NLI) determines whether a hypothesis follows a premise, classified into either entailment/neutral/contradiction [4]. 
     
@@ -51,11 +48,10 @@ The candidate metrics are:
     NLI(c, a) can reveal if the answer has effectively exploited the context. 
       <br><br>
 3. **Context Relevance Score (↑):**
-    <br><br>
+   
     $s(q,c) = 〈f_\theta(q),f_\theta(c)〉$[5]
 
     where $f_\theta$ is a retriever model parameterized by $\theta$.
-    <br><br>
 
     **Reasoning:** The intuition is simple here, a higher relevance score of a retrieved document (context) c to the question q, indicates the context is likely to be more helpful for the LLM to make an accurate response.
     
